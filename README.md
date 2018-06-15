@@ -7,18 +7,22 @@ Obten los Nombres y apellidos de una Persona a partir de su Nro de DNI o CUI de 
 <?php
     require ("./src/autoload.php");
 
-    $reniec = new \Reniec\Reniec(); // fuente no disponible
+    $reniec = new \Reniec\Reniec(); // Datos de Reniec (Padron de Electores)
     $essalud = new \EsSalud\EsSalud(); // Datos EsSalud
 	$mintra = new \MinTra\mintra(); // Datos Ministerio del Trabajo
 	
 	$dni = "00000000";
 	
-    //$persona1 = $reniec->search( $dni );
+    $persona1 = $reniec->search( $dni );
     $persona2 = $essalud->check( $dni );
     $persona3 = $mintra->check( $dni );
     
-    
-	if( $persona2->success ) // si la busqueda es exitosa
+    if( $persona1->success ) // si la busqueda es exitosa
+	{
+		print_r( $persona2->result );
+	}
+	
+	if( $persona2->success )
 	{
 		print_r( $persona2->result );
 	}
