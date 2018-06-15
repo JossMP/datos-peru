@@ -4,12 +4,23 @@
 	{
 		function __construct()
 		{
+			$this->reniec = new \Reniec\Reniec(); 
 			$this->essalud = new \EsSalud\EsSalud();
 			$this->mintra = new \MinTra\mintra();
-			$this->reniec = new \Reniec\Reniec(); // Fuente no disponible
 		}
 		function search( $dni )
 		{
+			$response = $this->reniec->search( $dni );
+			if($response->success == true)
+			{
+				$rpt = (object)array(
+					"success" 		=> true,
+					"source" 		=> "reniec",
+					"result" 		=> $response->result
+				);
+				return $rpt;
+			}
+			
 			$response = $this->essalud->check( $dni );
 			if($response->success == true)
 			{
@@ -20,19 +31,18 @@
 				);
 				return $rpt;
 			}
-			else
+			
+			$response = $this->mintra->check( $dni );
+			if( $response->success == true )
 			{
-				$response = $this->mintra->check( $dni );
-				if( $response->success == true )
-				{
-					$rpt = (object)array(
-						"success" 		=> true,
-						"source" 		=> "mintra",
-						"result" 		=> $response->result
-					);
-					return $rpt;
-				}
+				$rpt = (object)array(
+					"success" 		=> true,
+					"source" 		=> "mintra",
+					"result" 		=> $response->result
+				);
+				return $rpt;
 			}
+			
 			$rpt = (object)array(
 				"success" 		=> false,
 				"msg" 			=> "No se encontraron datos"
@@ -44,7 +54,7 @@
 	// MODO DE USO
 	/*  */
 	require_once( __DIR__ . "/src/autoload.php" );
-	//require_once( __DIR__ . "/vendor/autoload.php" ); // para comsposer
+	//require_once( __DIR__ . "/vendor/autoload.php" ); // si se usa composer
 	$test = new \DatosPeru\Peru();
 	print_r( $test->search("44274795") );
 ?>
