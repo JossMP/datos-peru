@@ -5,13 +5,13 @@
 		function __construct()
 		{
 			$this->cc = new \CURL\cURL();
-			$this->cc->setReferer('http://silnet.trabajo.gob.pe:8080/');
+			$this->cc->setReferer('http://senep.trabajo.gob.pe:8080/');
 		}
 		function getDataMinTra( $dni )
 		{
 			if(strlen(trim($dni))==8)
 			{
-				$url = 'http://silnet.trabajo.gob.pe:8080/empleoperu/Ajax.do?method=obtenerCiudadanotoXML&POST_NUMDOCUM='.$dni;
+				$url = 'http://senep.trabajo.gob.pe:8080/empleoperu/Ajax.do?method=obtenerCiudadanotoXML&POST_NUMDOCUM='.$dni;
 				$response = $this->cc->send( $url );
 				if($this->cc->getHttpStatus()==200 && $response!="")
 				{

@@ -31,7 +31,7 @@
 				);
 				return $rpt;
 			}
-			
+						
 			$response = $this->mintra->check( $dni );
 			if( $response->success == true )
 			{
