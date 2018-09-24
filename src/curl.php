@@ -40,7 +40,7 @@
 			$this->_includeHeader = $includeHeader;
 			$this->_binary = $binary;
 
-			$this->_cookieFileLocation = dirname(__FILE__).'/cookie.txt';
+			$this->_cookieFileLocation = __DIR__ . '/cookie.txt';
 			$this->s = curl_init();
 		}
 		

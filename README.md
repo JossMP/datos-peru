@@ -1,35 +1,62 @@
 # Datos Perú
 
-Obten los Nombres y apellidos de una Persona a partir de su Nro de DNI o CUI de cuidados Peruanos. puedes ver una demo [aqui].
+Busca datos de ciudadanos Peruanos a partir de su CUI o Numero de DNI.
 
 ### Metodo de Uso
 ```sh
 <?php
-    require ("./src/autoload.php");
-
-    $reniec = new \Reniec\Reniec(); // Datos de Reniec (Padron de Electores)
-    $essalud = new \EsSalud\EsSalud(); // Datos EsSalud
-	$mintra = new \MinTra\mintra(); // Datos Ministerio del Trabajo
+	require_once( __DIR__ . "/src/autoload.php" );
 	
-	$dni = "00000000";
+	$essalud = new \EsSalud\EsSalud();
+	$mintra = new \MinTra\mintra();
 	
-    $persona1 = $reniec->search( $dni );
-    $persona2 = $essalud->check( $dni );
-    $persona3 = $mintra->check( $dni );
+	$dni = "44274795";
+	
+    $search1 = $essalud->search( $dni );
+	$search2 = $mintra->search( $dni );
     
-    if( $persona1->success ) // si la busqueda es exitosa
+    if( $search1->success == true )
 	{
-		print_r( $persona2->result );
+		echo "Hola: " . $search1->result->nombre;
 	}
 	
-	if( $persona2->success )
+	if( $search2->success == true )
 	{
-		print_r( $persona2->result );
+		echo "Hola: " . $search2->result->nombre;
+	}
+?>
+```
+### Datos que se obtienen
+```sh
+<?php
+	...
+	$search = $essalud->search( $dni );
+	$search = $mintra->search( $dni );
+	
+	$search->result->dni;
+	$search->result->verificacion;
+	$search->result->nombre;
+	$search->result->paterno;
+	$search->result->materno;
+	$search->result->sexo;
+	$search->result->nacimiento;
+	$search->result->gvotacion; // NULL en EsSalud
+?>
+```
+### Mostrar Resultados en JSON / XML
+```sh
+<?php
+	...
+	if( $search->success == true )
+	{
+		echo $search->json( );
+		echo $search->json( 'callback' ); // para llamadas desde js
 	}
 	
-	if( $persona3->success )
+	if( $search->success == true )
 	{
-		print_r( $persona3->result );
+		echo PHP_EOL . $search->xml( ); 
+		echo PHP_EOL . $search->xml( 'persona' ); // define nodo raiz
 	}
 ?>
 ```
@@ -46,6 +73,17 @@ Obten los Nombres y apellidos de una Persona a partir de su Nro de DNI o CUI de 
 ?>
 ```
 
-[aqui]: <https://demos.geekdev.ml/>
-[PayPal]: <https://www.paypal.me/JossMP>
+### Pre-requisitos
+```sh
+- cURL
+- PHP 5.2.0 o superior
+```
 
+Demo en linea: [Ver demo]
+Donaciones: [PayPal]
+
+
+Copyright (C), 2018 Josue Mazco GNU General Public License 3 (http://www.gnu.org/licenses/)
+
+[Ver demo]: <https://www.peruanosenlinea.com/busca-personas-por-el-dni/>
+[PayPal]: <https://www.paypal.me/JossMP>
