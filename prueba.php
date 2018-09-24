@@ -20,7 +20,7 @@
 	}
 	
 	// --------- JSON / XML
-	
+
 	if( $search1->success == true )
 	{
 		echo PHP_EOL . $search1->json();
