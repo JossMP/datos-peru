@@ -11,7 +11,7 @@
         {
             "name" 		: "Josue Mazco Puma",
             "email" 	: "jossmp@gmail.com",
-            "homepage" 	: "https://geekdev.ml/",
+            "homepage" 	: "https://github.com/JossMP",
             "role" 		: "Developers"
         }
     ],
@@ -24,10 +24,11 @@
     },
     "autoload": {
 		"psr-4": {
-			"Reniec\\" 	: "src/reniec/",
-			"MinTra\\" 	: "src/mintra/",
-			"EsSalud\\" : "src/essalud/",
-			"CURL\\" 	: "src/"
+			"Reniec\\" 		: "src/reniec/",
+			"MinTra\\" 		: "src/mintra/",
+			"EsSalud\\" 	: "src/essalud/",
+			"response\\" 	: "src/"
+			"CURL\\" 		: "src/"
 		}
 	}
 }
