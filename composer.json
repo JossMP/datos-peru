@@ -27,7 +27,7 @@
 			"Reniec\\" 		: "src/reniec/",
 			"MinTra\\" 		: "src/mintra/",
 			"EsSalud\\" 	: "src/essalud/",
-			"response\\" 	: "src/"
+			"response\\" 	: "src/",
 			"CURL\\" 		: "src/"
 		}
 	}
