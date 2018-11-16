@@ -9,7 +9,7 @@
 		}
 		function getCode( $dni )
 		{
-			if ($dni!="" || strlen($dni) == 8)
+			if ($dni!="" && strlen($dni) == 8 && is_numeric($dni) )
 			{
 				$suma = 0;
 				$hash = array(5, 4, 3, 2, 7, 6, 5, 4, 3, 2);
