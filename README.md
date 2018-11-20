@@ -9,11 +9,13 @@ Busca datos de ciudadanos Peruanos a partir de su CUI o Numero de DNI.
 	
 	$essalud = new \EsSalud\EsSalud();
 	$mintra = new \MinTra\mintra();
+	$servir = new \servir\servir();
 	
 	$dni = "44274795";
 	
     $search1 = $essalud->search( $dni );
 	$search2 = $mintra->search( $dni );
+	$search3 = $servir->search( $dni );
     
     if( $search1->success == true )
 	{
@@ -21,6 +23,11 @@ Busca datos de ciudadanos Peruanos a partir de su CUI o Numero de DNI.
 	}
 	
 	if( $search2->success == true )
+	{
+		echo "Hola: " . $search2->result->nombre;
+	}
+	
+	if( $search3->success == true )
 	{
 		echo "Hola: " . $search2->result->nombre;
 	}
@@ -50,7 +57,7 @@ Busca datos de ciudadanos Peruanos a partir de su CUI o Numero de DNI.
 	if( $search->success == true )
 	{
 		echo $search->json( );
-		echo $search->json( 'callback' ); // para llamadas desde js
+		echo $search->json( 'callback' ); // para llamadas desde JS
 	}
 	
 	if( $search->success == true )

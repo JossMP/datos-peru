@@ -1,3 +1,11 @@
+<?php
+	session_start();
+	$hora = date('H:i');
+	$session_id = session_id();
+	$token = hash('sha256', $hora.$session_id);
+	 
+	$_SESSION['token'] = $token;
+?>
 <!DOCTYPE html>
 <html lang="es">
   <head>
@@ -33,14 +41,18 @@
 						Ingrese los datos requeridos
 					</div>
 					<div class="card-body">
+						<input type="hidden" name="token" id="token" value="<?=$_SESSION['token'];?>">
 						<input type="number" class="form-control" name="ndni" id="ndni" placeholder="Ingrese DNI" pattern="([0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]|[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9])" autofocus>
 					</div>
 					<div class="card-footer text-center">
-						<button type="submit" class="btn btn-success" name="btn-submit" data-source="EsSalud" id="btn-submit-1">
+						<button type="submit" class="btn btn-success" name="btn-submit-1" data-source="EsSalud" id="btn-submit-1">
 							<i class="fa fa-search"></i> EsSalud
 						</button>
-						<button type="submit" class="btn btn-info" name="btn-submit" data-source="MinTra" id="btn-submit-2">
-							<i class="fa fa-search"></i> Ministerio del Trabajo
+						<button type="submit" class="btn btn-info" name="btn-submit-2" data-source="MinTra" id="btn-submit-2">
+							<i class="fa fa-search"></i> MINTRA
+						</button>
+						<button type="submit" class="btn btn-warning" name="btn-submit-3" data-source="servir" id="btn-submit-3">
+							<i class="fa fa-search"></i> SERVIR
 						</button>
 					</div>
 				</div>
@@ -103,14 +115,18 @@
 		<script src="js/ajaxview.js"></script>
 		<script>
 			$(document).ready(function(){
-				$("#btn-submit-1, #btn-submit-2").click(function(e)
+				$("button").click(function(e)
 				{
 					var $this = $(this);
 					$source = $this.data("source");
 					e.preventDefault();
 					$.ajaxblock();
 					$.ajax({
-						data: { "ndni" : $("#ndni").val(),"source" : $source },
+						data: {
+							"ndni" : $("#ndni").val(),
+							"source" : $source,
+							"token" : $("#token").val()
+						},
 						type: "POST",
 						dataType: "json",
 						url: "consulta.php",
