@@ -1,0 +1,4 @@
+#Ignorando contenido de carpetas
+*.txt
+*.zip
+*.bak
