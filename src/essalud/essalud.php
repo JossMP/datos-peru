@@ -53,7 +53,7 @@
 			if( $this->cc->getHttpStatus() == 200 && $code != "")
 			{
 				$json = json_decode( $code );
-				if( isset($json->DatosPerson[0]) && count($json->DatosPerson[0]) > 0 && strlen($json->DatosPerson[0]->DNI)>=8 && $json->DatosPerson[0]->Nombres != "" )
+				if( !empty($json->DatosPerson[0]) && isset($json->DatosPerson[0]->DNI) && strlen($json->DatosPerson[0]->DNI)>=8 && $json->DatosPerson[0]->Nombres != "" )
 				{
 					$sexo = ( (string)$json->DatosPerson[0]->Sexo == '2' ) ? "Masculino" : "Femenino";
 					$response = new \response\obj();
