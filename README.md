@@ -112,5 +112,5 @@ Donaciones: [PayPal]
 
 Copyright (C), 2018 Josue Mazco GNU General Public License 3 (http://www.gnu.org/licenses/)
 
-[ver demo]: https://www.peruanosenlinea.com/busca-personas-por-el-dni/
+[ver demo]: https://demos.ozonohost.com/datos-peru/
 [paypal]: https://www.paypal.me/JossMP
