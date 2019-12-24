@@ -1,0 +1,119 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "This file is @generated automatically"
+    ],
+    "content-hash": "1bc44f0c9bb7ab0c068aa3cff67ee2ac",
+    "packages": [
+        {
+            "name": "jossmp/navigate",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://gitlab.com/JossMP/navigate.git",
+                "reference": "2be48f56c0546482f3a1944b1007f16edf821c90"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://gitlab.com/api/v4/projects/JossMP%2Fnavigate/repository/archive.zip?sha=2be48f56c0546482f3a1944b1007f16edf821c90",
+                "reference": "2be48f56c0546482f3a1944b1007f16edf821c90",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*",
+                "lib-curl": "*"
+            },
+            "require-dev": {
+                "php": ">=5.5"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "jossmp\\navigate\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Josue Mazco Puma",
+                    "email": "jossmp@gmail.com",
+                    "homepage": "https://gitlab.com/JossMP",
+                    "role": "Developers"
+                }
+            ],
+            "description": "Libreria para el uso de cURL",
+            "homepage": "https://gitlab.com/JossMP/",
+            "keywords": [
+                "curl",
+                "navigate",
+                "scraping"
+            ],
+            "time": "2019-12-21T16:21:58+00:00"
+        },
+        {
+            "name": "jossmp/response",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://gitlab.com/JossMP/response.git",
+                "reference": "adebd7ffa6b3c3ccfcf196404f900d9ca43010c7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://gitlab.com/api/v4/projects/JossMP%2Fresponse/repository/archive.zip?sha=adebd7ffa6b3c3ccfcf196404f900d9ca43010c7",
+                "reference": "adebd7ffa6b3c3ccfcf196404f900d9ca43010c7",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*",
+                "lib-curl": "*"
+            },
+            "require-dev": {
+                "php": ">=5.5"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "jossmp\\response\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Josue Mazco Puma",
+                    "email": "jossmp@gmail.com",
+                    "homepage": "https://gitlab.com/JossMP",
+                    "role": "Developers"
+                }
+            ],
+            "description": "Convierte array en Objeto",
+            "homepage": "https://gitlab.com/JossMP/",
+            "keywords": [
+                "Object 2 Array",
+                "array",
+                "object"
+            ],
+            "time": "2019-12-21T16:19:32+00:00"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "dev",
+    "stability-flags": {
+        "jossmp/navigate": 20,
+        "jossmp/response": 20
+    },
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": {
+        "php": ">=5.2"
+    }
+}

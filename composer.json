@@ -13,7 +13,6 @@
     ],
     "homepage": "https://github.com/JossMP/datos-peru",
     "license": "GPL-3.0-or-later",
-    "minimum-stability": "dev",
     "optimize-autoloader": true,
     "authors": [
         {
