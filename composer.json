@@ -23,8 +23,8 @@
         }
     ],
     "require": {
-        "jossmp/navigate": "dev-master",
-        "jossmp/response": "dev-master"
+        "jossmp/navigate": "^0.0.1",
+        "jossmp/response": "^0.0.1"
     },
     "require-dev": {
         "php": ">=5.2"
