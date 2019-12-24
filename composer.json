@@ -2,33 +2,40 @@
     "name": "jossmp/datos-peru",
     "description": "Clase para realizar consultas a reniec, essalud, ministrio del trabajo con el numero de DNI",
     "type": "library",
-    "keywords": ["Reniec", "EsSalud", "Mintra", "Peru", "PHP", "Consulta", "cURL"],
-    "homepage" : "https://github.com/JossMP/datos-peru",
+    "keywords": [
+        "Reniec",
+        "EsSalud",
+        "Mintra",
+        "Peru",
+        "PHP",
+        "Consulta",
+        "cURL"
+    ],
+    "homepage": "https://github.com/JossMP/datos-peru",
     "license": "GPL-3.0-or-later",
     "minimum-stability": "dev",
     "optimize-autoloader": true,
     "authors": [
         {
-            "name" 		: "Josue Mazco Puma",
-            "email" 	: "jossmp@gmail.com",
-            "homepage" 	: "https://github.com/JossMP",
-            "role" 		: "Developers"
+            "name": "Josue Mazco Puma",
+            "email": "jossmp@gmail.com",
+            "homepage": "https://github.com/JossMP",
+            "role": "Developers"
         }
     ],
     "require": {
-        "ext-curl" : "*",
-        "lib-curl" : "*"
+        "jossmp/navigate": "dev-master",
+        "jossmp/response": "dev-master"
     },
     "require-dev": {
-        "php" 	: ">=5.2"
+        "php": ">=5.2"
     },
     "autoload": {
-		"psr-4": {
-			"Reniec\\" 		: "src/reniec/",
-			"MinTra\\" 		: "src/mintra/",
-			"EsSalud\\" 	: "src/essalud/",
-			"response\\" 	: "src/",
-			"CURL\\" 		: "src/"
-		}
-	}
+        "psr-4": {
+            "jossmp\\reniec\\": "src/reniec/",
+            "jossmp\\jne\\": "src/jne/",
+            "jossmp\\essalud\\": "src/essalud/",
+            "jossmp\\mintra\\": "src/mintra/"
+        }
+    }
 }
