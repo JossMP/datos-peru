@@ -8,28 +8,6 @@ class rop
 	function __construct($config = array())
 	{
 		$this->curl = (new \jossmp\navigate\RequestCurl())->getCurl();
-
-		if (isset($config["proxy"])) {
-			$use 	= (isset($config["proxy"]["use"])) ? $config["proxy"]["use"] : FALSE;
-			$host 	= (isset($config["proxy"]["host"])) ? $config["proxy"]["host"] : NULL;
-			$port 	= (isset($config["proxy"]["port"])) ? $config["proxy"]["port"] : NULL;
-			$type 	= (isset($config["proxy"]["type"])) ? $config["proxy"]["type"] : NULL;
-			$user 	= (isset($config["proxy"]["user"])) ? $config["proxy"]["user"] : NULL;
-			$pass 	= (isset($config["proxy"]["pass"])) ? $config["proxy"]["user"] : NULL;
-			if ($use != FALSE) {
-				$this->curl->setProxy($host, $port, $user, $pass);
-				$this->curl->setProxyType($type);
-			}
-		}
-		if (isset($config["cookie"])) {
-			$use 	= (isset($config["cookie"]["use"])) ? $config["cookie"]["use"] : TRUE;
-			$file 	= (isset($config["cookie"]["file"])) ? $config["cookie"]["file"] : 'cookie.txt';
-
-			if ($use != FALSE) {
-				$this->curl->setCookieFile($file);
-				$this->curl->setCookieJar($file);
-			}
-		}
 	}
 	private function digit_control($dni)
 	{
@@ -82,7 +60,7 @@ class rop
 		if (strlen($dni) != 8 || !is_numeric($dni)) {
 			$return = new \jossmp\response\obj(array(
 				'success' => false,
-				'message' => 'Error DNI: Debe Ingresar 8 digitos numericos.'
+				'message' => 'Debe Ingresar 8 digitos numericos.'
 			));
 			return $return;
 		}
@@ -101,16 +79,20 @@ class rop
 				if (is_object($obj) && isset($obj->data) && $obj->data != '||') {
 					$part = explode('|', $obj->data);
 					if (!empty($part) && count($part) == 3) {
-						return new \jossmp\response\obj(array(
+						$return = new \jossmp\response\obj(array(
 							'success' => true,
 							'result' => array(
-								'dni'            => $dni,
-								'digito_control' => $this->digit_control($dni),
-								'nombre'         => $part[2],
-								'paterno'        => $part[0],
-								'materno'        => $part[1]
+								'dni'          => $dni,
+								'verificacion' => $this->digit_control($dni),
+								'paterno'      => (string) $part[0],
+								'materno'      => (string) $part[1],
+								'nombre'       => (string) $part[2],
+								'sexo'         => NULL,
+								'nacimiento'   => NULL,
+								'gvotacion'    => NULL,
 							)
 						));
+						return $return;
 					}
 				}
 				$return = new \jossmp\response\obj(array(

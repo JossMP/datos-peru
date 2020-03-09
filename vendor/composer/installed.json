@@ -1,8 +1,8 @@
 [
     {
         "name": "jossmp/navigate",
-        "version": "dev-master",
-        "version_normalized": "9999999-dev",
+        "version": "v0.0.1",
+        "version_normalized": "0.0.1.0",
         "source": {
             "type": "git",
             "url": "https://gitlab.com/JossMP/navigate.git",
@@ -51,8 +51,8 @@
     },
     {
         "name": "jossmp/response",
-        "version": "dev-master",
-        "version_normalized": "9999999-dev",
+        "version": "v0.0.1",
+        "version_normalized": "0.0.1.0",
         "source": {
             "type": "git",
             "url": "https://gitlab.com/JossMP/response.git",

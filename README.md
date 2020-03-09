@@ -26,15 +26,18 @@ Busca datos de ciudadanos Peruanos a partir de su CUI o Numero de DNI.
 
 ```sh
 <?php
-	require_once("../vendor/autoload.php" );
+	require_once("/vendor/autoload.php");
 
-	$reniec = new \jossmp\reniec\padron(); // Padron electoral RENIEC
-	$jne = new \jossmp\jne\rop(); // Registro de Org. Politicas JNE
+	$rop = new \jossmp\jne\rop(); // Registro de Organicaciones Politicas
+	$essalud = new \jossmp\essalud\asegurado();
+	$servir = new \jossmp\servir\servir();
+	//$mtc = new \jossmp\mtc\conductor(); //Miniterio de trasporte y comunicaciones
 
 	$dni = "44274795";
 
-    $search1 = $reniec->consulta( $dni );
-	$search2 = $jne->consulta( $dni );
+    $search1 = $rop->consulta( $dni );
+	$search2 = $essalud->consulta( $dni );
+	$search3 = $servir->consulta( $dni );
 
     if( $search1->success == true )
 	{
@@ -45,14 +48,53 @@ Busca datos de ciudadanos Peruanos a partir de su CUI o Numero de DNI.
 	{
 		echo "Hola: " . $search2->result->nombre;
 	}
+
+	if( $search2->success == true )
+	{
+		echo "Hola: " . $search3->result->nombre;
+	}
 ?>
 ```
-
-### Estructura datos RENIEC(Padron electoral)
+### Estructura datos EsSalud
 
 ```sh
-<?php
-	...
+{
+    "success": true,
+    "result": {
+        "dni": "44274795",
+        "verificacion": 0,
+        "paterno": "MAZCO",
+        "materno": "PUMA",
+        "nombre": "JOSUE",
+        "sexo": "Masculino",
+        "nacimiento": "22/**/****",
+        "gvotacion": null
+    },
+    "asegurado": null
+}
+```
+
+### Estructura datos SERVIR y JNE(Registro de Org. Politicas)
+
+```sh
+{
+    "success": true,
+    "result": {
+        "dni": "44274795",
+        "verificacion": 0,
+        "paterno": "MAZCO",
+        "materno": "PUMA",
+        "nombre": "JOSUE",
+        "sexo": null,
+        "nacimiento": null,
+        "gvotacion": null
+    }
+}
+```
+
+### Estructura datos RENIEC - Padron electoral (No disponible)
+
+```sh
 {
 	"success": true,
 	"result": {
@@ -66,25 +108,6 @@ Busca datos de ciudadanos Peruanos a partir de su CUI o Numero de DNI.
 		"departamento": "PUNO"
 	}
 }
-?>
-```
-
-### Estructura datos JNE(Registro de Org. Politicas)
-
-```sh
-<?php
-	...
-{
-	"success": true,
-	"result": {
-		"dni": "44274795",
-		"digito_control": 0,
-		"nombre": "JOSUE",
-		"paterno": "MAZCO",
-		"materno": "PUMA"
-	}
-}
-?>
 ```
 
 ### Mostrar Resultados en JSON / XML
@@ -95,7 +118,7 @@ Busca datos de ciudadanos Peruanos a partir de su CUI o Numero de DNI.
 	if( $search->success == true )
 	{
 		echo $search->json( );
-		echo $search->json( 'callback' ); // para llamadas desde JS
+		echo $search->json( 'callback_js' );
 	}
 
 	if( $search->success == true )
@@ -106,11 +129,8 @@ Busca datos de ciudadanos Peruanos a partir de su CUI o Numero de DNI.
 ?>
 ```
 
-Demo en linea: [Ver demo]
-
 Donaciones: [PayPal]
 
 Copyright (C), 2018 Josue Mazco GNU General Public License 3 (http://www.gnu.org/licenses/)
 
-[ver demo]: https://demos.ozonohost.com/datos-peru/
 [paypal]: https://www.paypal.me/JossMP

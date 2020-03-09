@@ -34,7 +34,8 @@
             "jossmp\\reniec\\": "src/reniec/",
             "jossmp\\jne\\": "src/jne/",
             "jossmp\\essalud\\": "src/essalud/",
-            "jossmp\\mintra\\": "src/mintra/"
+            "jossmp\\mtc\\": "src/mtc/",
+            "jossmp\\servir\\": "src/servir/"
         }
     }
 }

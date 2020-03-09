@@ -4,11 +4,11 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1bc44f0c9bb7ab0c068aa3cff67ee2ac",
+    "content-hash": "7e085b4b013e5aaa6e1d58f927a748bf",
     "packages": [
         {
             "name": "jossmp/navigate",
-            "version": "dev-master",
+            "version": "v0.0.1",
             "source": {
                 "type": "git",
                 "url": "https://gitlab.com/JossMP/navigate.git",
@@ -56,7 +56,7 @@
         },
         {
             "name": "jossmp/response",
-            "version": "dev-master",
+            "version": "v0.0.1",
             "source": {
                 "type": "git",
                 "url": "https://gitlab.com/JossMP/response.git",
@@ -105,11 +105,8 @@
     ],
     "packages-dev": [],
     "aliases": [],
-    "minimum-stability": "dev",
-    "stability-flags": {
-        "jossmp/navigate": 20,
-        "jossmp/response": 20
-    },
+    "minimum-stability": "stable",
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": [],

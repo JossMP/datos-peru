@@ -6,10 +6,11 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'jossmp\\servir\\' => array($baseDir . '/src/servir'),
     'jossmp\\response\\' => array($vendorDir . '/jossmp/response/src'),
     'jossmp\\reniec\\' => array($baseDir . '/src/reniec'),
     'jossmp\\navigate\\' => array($vendorDir . '/jossmp/navigate/src'),
-    'jossmp\\mintra\\' => array($baseDir . '/src/mintra'),
+    'jossmp\\mtc\\' => array($baseDir . '/src/mtc'),
     'jossmp\\jne\\' => array($baseDir . '/src/jne'),
     'jossmp\\essalud\\' => array($baseDir . '/src/essalud'),
 );

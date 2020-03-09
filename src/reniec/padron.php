@@ -8,25 +8,6 @@ class padron
 	public function __construct($config = array())
 	{
 		$this->curl = (new \jossmp\navigate\RequestCurl())->getCurl();
-
-		if (isset($config["proxy"])) {
-			$use  = (isset($config["proxy"]["use"])) ? $config["proxy"]["use"] : false;
-			$host = (isset($config["proxy"]["host"])) ? $config["proxy"]["host"] : null;
-			$port = (isset($config["proxy"]["port"])) ? $config["proxy"]["port"] : null;
-			$type = (isset($config["proxy"]["type"])) ? $config["proxy"]["type"] : null;
-			$user = (isset($config["proxy"]["user"])) ? $config["proxy"]["user"] : null;
-			$pass = (isset($config["proxy"]["pass"])) ? $config["proxy"]["user"] : null;
-			if ($use != false) {
-				$this->curl->setProxy($host, $port, $user, $pass);
-				$this->curl->setProxyType($type);
-			}
-		}
-		if (isset($config["cookie"])) {
-			$file = (isset($config["cookie"]["file"])) ? $config["cookie"]["file"] : sys_get_temp_dir() . '/cookie.txt';
-
-			$this->curl->setCookieFile($file);
-			$this->curl->setCookieJar($file);
-		}
 	}
 
 	private function digit_control($dni)
